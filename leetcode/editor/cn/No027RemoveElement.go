@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 //给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
 //
@@ -63,13 +65,30 @@ import "fmt"
 func main() {
 	var nums []int
 	var val int
+	nums = []int{3, 2, 2, 3, 1}
+	val = 3
 	value := removeElement(nums, val)
-	fmt.Println(fmt.Sprintf("%d", value))
+	fmt.Println(fmt.Sprintf("valLen: %d, nums: %+v", value, nums))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func removeElement(nums []int, val int) int {
-	return 1
+	var unMatchIndex int
+	for arrIndex := 0; arrIndex < len(nums); arrIndex++ {
+		if nums[arrIndex] == val {
+			continue
+		}
+		nums[unMatchIndex] = nums[arrIndex]
+		unMatchIndex++
+	}
+
+	for i := unMatchIndex; i < len(nums); i++ {
+		nums[i] = 0
+	}
+
+	println(unMatchIndex)
+
+	return unMatchIndex
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
