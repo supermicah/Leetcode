@@ -42,14 +42,14 @@ func main() {
 	fmt.Println(fmt.Sprintf("%+v", value))
 }
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func (l *ListNode) String() string {
-	return fmt.Sprintf("%d, next: %s", l.Val, l.Next)
-}
+//type ListNode struct {
+//	Val  int
+//	Next *ListNode
+//}
+//
+//func (l *ListNode) String() string {
+//	return fmt.Sprintf("%d, next: %s", l.Val, l.Next)
+//}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
@@ -60,12 +60,16 @@ func (l *ListNode) String() string {
  * }
  */
 
-func deleteDuplicates(head *ListNode) *ListNode {
+func deleteDuplicates1(head *ListNode) *ListNode {
+	// 获取队列句柄
 	current := head
+	// 如果当前和下一个不存在，则直接返回（只有一个，是没有重复的）
 	for current != nil && current.Next != nil {
+		// 循环当前值与下一个值，如果当前值和下一个相同，则跳过下一个，采用下下个
 		for current.Next != nil && current.Val == current.Next.Val {
 			current.Next = current.Next.Next
 		}
+		// 切换句柄
 		current = current.Next
 	}
 	return head
