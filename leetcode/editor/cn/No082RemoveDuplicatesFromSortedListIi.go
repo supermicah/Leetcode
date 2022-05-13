@@ -52,14 +52,14 @@ func main() {
 	fmt.Println(fmt.Sprintf("%+v", value))
 }
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func (l *ListNode) String() string {
-	return fmt.Sprintf("%d, next: %s", l.Val, l.Next)
-}
+//type ListNode struct {
+//	Val  int
+//	Next *ListNode
+//}
+//
+//func (l *ListNode) String() string {
+//	return fmt.Sprintf("%d, next: %s", l.Val, l.Next)
+//}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**

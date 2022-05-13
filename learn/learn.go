@@ -7,6 +7,7 @@ func main() {
 	for i := 0; i < 10; i++ {
 		a = append(a, i)
 	}
+	println(b)
 	println(fmt.Sprintf("%+v", a[len(a)-1]))
 	println(fmt.Sprintf("%+v", a[:len(a)-1]))
 }
