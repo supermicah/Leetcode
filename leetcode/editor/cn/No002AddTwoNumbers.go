@@ -49,10 +49,10 @@ func main() {
 	fmt.Println(fmt.Sprintf("%+v", value))
 }
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+//type ListNode struct {
+//	Val  int
+//	Next *ListNode
+//}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**

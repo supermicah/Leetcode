@@ -33,4 +33,4 @@
 	<li><code>0 <= nums.length <= 3000</code></li>
 	<li><code>-10<sup>5</sup> <= nums[i] <= 10<sup>5</sup></code></li>
 </ul>
-<div><div>Related Topics</div><div><li>数组</li><li>双指针</li><li>排序</li></div></div><br><div><li>👍 4648</li><li>👎 0</li></div>
+<div><div>Related Topics</div><div><li>数组</li><li>双指针</li><li>排序</li></div></div><br><div><li>👍 4751</li><li>👎 0</li></div>
