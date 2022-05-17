@@ -39,7 +39,8 @@ import "fmt"
 func main() {
 	var head *ListNode
 
-	for _, val := range []int{3, 5} { //1,2,3,4,5
+	//for _, val := range []int{3, 5} { //1,2,3,4,5
+	for _, val := range []int{1, 2, 3, 4, 5} { //1,2,3,4,5
 		temp := &ListNode{Val: val}
 		if head == nil {
 			head = &ListNode{Val: val}
@@ -52,7 +53,7 @@ func main() {
 		current.Next = temp
 	}
 	fmt.Println(fmt.Sprintf("before: %+v", head))
-	value := reverseBetween(head, 1, 2)
+	value := reverseBetween(head, 2, 4)
 	fmt.Println(fmt.Sprintf("after: %+v", head))
 	fmt.Println(fmt.Sprintf("%+v", value))
 }
@@ -74,53 +75,37 @@ func (l *ListNode) String() string {
  *     Next *ListNode
  * }
  */
+
 func reverseBetween(head *ListNode, left int, right int) *ListNode {
 	if head == nil || left == right {
 		return head
 	}
-	var leftNode *ListNode
-	var rightNode *ListNode
-	var loopNode *ListNode
-	var lastNode *ListNode
-	currentNode := head
 
-	index := 1
-	for currentNode.Next != nil {
-		if index < left {
-			leftNode = currentNode
-			currentNode = currentNode.Next
-			index++
-			continue
-		}
-		if index > right {
-			if rightNode == nil {
-				rightNode = currentNode
-			}
-			currentNode = currentNode.Next
-			index++
-			continue
-		}
-		if lastNode == nil {
-			lastNode = currentNode
-		}
-
-		temp := currentNode.Next
-		currentNode.Next = loopNode
-		loopNode = currentNode
-		currentNode = temp
-
-		index++
-
+	// 先在头部增加节点，防止头部需要切换
+	dummy := &ListNode{Val: 0}
+	cursor := dummy
+	var pre *ListNode
+	i := 0
+	for i < left {
+		pre = cursor
+		cursor = dummy.Next
+		i++
 	}
-
-	leftNode.Next = loopNode
-	if rightNode == nil {
-		lastNode.Next = currentNode
-	} else {
-		lastNode.Next = rightNode
+	// 遍历之后： 1(pre)->2(head)->3->4->5->NULL
+	// i = 1
+	mid := cursor
+	var next *ListNode
+	for cursor != nil && i < right {
+		temp := cursor.Next
+		cursor.Next = next
+		next = cursor
+		cursor = temp
+		i++
 	}
+	pre.Next = next
+	mid.Next = cursor
 
-	return head
+	return dummy.Next
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
