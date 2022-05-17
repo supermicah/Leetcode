@@ -49,7 +49,8 @@ import "fmt"
 // Related Topics 数组 二分查找 👍 498 👎 0
 
 func main() {
-	value := 1
+	//value := findMin([]int{3, 3, 1, 3})
+	value := findMin([]int{1, 1, 3})
 	no154Print("%+v", value)
 }
 
@@ -59,7 +60,33 @@ func no154Print(format string, params ...interface{}) {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func findMin(nums []int) int {
-	return 0
+	if len(nums) == 1 {
+		return nums[0]
+	}
+
+	start := 0
+	end := len(nums) - 1
+	for start+1 < end {
+		for start < end && nums[end-1] == nums[end] {
+			end--
+		}
+		for start < end && nums[start] == nums[start+1] {
+			start++
+		}
+
+		mid := start + (end-start)/2
+
+		if nums[mid] > nums[end] {
+			start = mid
+		} else {
+			end = mid
+		}
+	}
+	if nums[start] < nums[end] {
+		return nums[start]
+	}
+
+	return nums[end]
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
