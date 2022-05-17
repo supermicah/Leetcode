@@ -38,7 +38,7 @@ import "fmt"
 // Related Topics 栈 贪心 数组 单调栈 👍 83 👎 0
 
 func main() {
-	value := 1
+	value := mostCompetitive([]int{3, 5, 2, 6}, 2)
 	no1673Print("%+v", value)
 }
 
@@ -48,7 +48,21 @@ func no1673Print(format string, params ...interface{}) {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func mostCompetitive(nums []int, k int) []int {
-	return nil
+	length := len(nums)
+	removeCount := length - k
+	var stack []int
+	var ans []int
+	for i := 0; i < length; i++ {
+		for removeCount > 0 && len(stack) > 0 && nums[stack[len(stack)-1]] > nums[i] {
+			stack = stack[:len(stack)-1]
+			removeCount--
+		}
+		stack = append(stack, i)
+	}
+	for i := 0; i < k; i++ {
+		ans = append(ans, nums[stack[i]])
+	}
+	return ans
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
