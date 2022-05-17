@@ -38,9 +38,13 @@ import "fmt"
 // 1 <= bad <= n <= 2³¹ - 1
 //
 // Related Topics 二分查找 交互 👍 690 👎 0
+var badVersion int
 
 func main() {
-	value := 1
+	//badVersion = 6
+	//value := firstBadVersion(10)
+	badVersion = 2
+	value := firstBadVersion(2)
 	no278Print("%+v", value)
 }
 
@@ -58,7 +62,24 @@ func no278Print(format string, params ...interface{}) {
  */
 
 func firstBadVersion(n int) int {
-	return 0
+	start := 1
+	end := n
+	for start+1 < end {
+		mid := start + (end-start)/2
+		if isBadVersion(mid) {
+			end = mid
+		} else {
+			start = mid
+		}
+	}
+	if isBadVersion(start) {
+		return start
+	}
+	return end
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
+
+func isBadVersion(version int) bool {
+	return version >= badVersion
+}
