@@ -80,8 +80,26 @@ func main() {
  *     Next *ListNode
  * }
  */
-
 func reverseList(head *ListNode) *ListNode {
+	if head == nil {
+		return head
+	}
+
+	var pre *ListNode
+	cursor := head
+	for cursor != nil {
+		temp := cursor.Next
+		cursor.Next = pre
+		pre = cursor
+		cursor = temp
+	}
+
+	return head
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+func reverseList2(head *ListNode) *ListNode {
 	if head == nil {
 		return head
 	}
@@ -124,5 +142,3 @@ func reverseList1(head *ListNode) *ListNode {
 
 	return result.Next
 }
-
-//leetcode submit region end(Prohibit modification and deletion)
