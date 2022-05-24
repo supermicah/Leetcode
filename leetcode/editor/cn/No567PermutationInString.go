@@ -40,6 +40,24 @@ func main() {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func checkInclusion(s1 string, s2 string) bool {
+	//win := make(map[byte]int)
+	//need := make(map[byte]int)
+	//for i := 0; i < len(s2); i++ {
+	//	need[s2[i]]++
+	//}
+	//
+	//left := 0
+	//right := 0
+	//
+	//// 匹配结果
+	//match := 0
+	//start := 0
+	//end := 0
+	//
+	//for right < len(s1) {
+	//
+	//}
+
 	return false
 }
 
