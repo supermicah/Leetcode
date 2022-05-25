@@ -42,15 +42,15 @@ func no95Print(format string, params ...interface{}) {
 	println(fmt.Sprintf(format, params...))
 }
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
-func (t *TreeNode) String() string {
-	return fmt.Sprintf("[%d, left: %s, right: %s]", t.Val, t.Left, t.Right)
-}
+//type TreeNode struct {
+//	Val   int
+//	Left  *TreeNode
+//	Right *TreeNode
+//}
+//
+//func (t *TreeNode) String() string {
+//	return fmt.Sprintf("[%d, left: %s, right: %s]", t.Val, t.Left, t.Right)
+//}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**

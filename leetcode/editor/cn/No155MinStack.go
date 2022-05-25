@@ -75,12 +75,13 @@ type MinStack struct {
 	stack []int
 }
 
-func Constructor() MinStack {
-	return MinStack{
-		min:   make([]int, 0),
-		stack: make([]int, 0),
-	}
-}
+//
+//func Constructor() MinStack {
+//	return MinStack{
+//		min:   make([]int, 0),
+//		stack: make([]int, 0),
+//	}
+//}
 
 func (this *MinStack) Push(val int) {
 	min := this.GetMin()
