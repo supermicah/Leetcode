@@ -55,10 +55,7 @@ func no509Print(format string, params ...interface{}) {
 	println(fmt.Sprintf(format, params...))
 }
 
-//leetcode submit region begin(Prohibit modification and deletion)
-var cache = make(map[int]int)
-
-func fib(n int) int {
+func fib1(n int) int {
 	if n < 2 {
 		return n
 	}
@@ -69,6 +66,24 @@ func fib(n int) int {
 	m := fib(n-1) + fib(n-2)
 	cache[n] = m
 	return m
+}
+
+//leetcode submit region begin(Prohibit modification and deletion)
+var cache = make(map[int]int)
+
+func fib(n int) int {
+	if n < 2 {
+		return n
+	}
+
+	first, second, result := 0, 0, 1
+	for i := 2; i <= n; i++ {
+		first = second
+		second = result
+		result = first + second
+	}
+
+	return result
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"sync"
 	"sync/atomic"
 	"time"
@@ -10,7 +11,13 @@ import (
 func main() {
 	//testSlice()
 	//println(testDefer())
-	casRun()
+	//casRun()
+	runUnitPtr()
+}
+
+func runUnitPtr() {
+	println(uintptr(1))
+	println(4 << (^uintptr(0) >> 63))
 }
 
 func testSlice() {
@@ -57,4 +64,9 @@ func incCounter(index int) {
 	}
 	fmt.Printf("thread,%d,spinnum,%d\n", index, spinNum)
 	time.Now()
+
+	for _, ints := range [][2]int{{1, 2}} {
+		println(ints)
+
+	}
 }

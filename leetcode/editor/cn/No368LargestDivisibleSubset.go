@@ -86,7 +86,6 @@ func largestDivisibleSubset(nums []int) []int {
 			maxVal = nums[i]
 			maxSize--
 		}
-
 	}
 
 	//println(fmt.Sprintf("maxSize: %d, maxVal: %d, res: %+v", maxSize, maxVal, res))
