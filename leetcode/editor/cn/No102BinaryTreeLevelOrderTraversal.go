@@ -65,7 +65,7 @@ func no102Print(format string, params ...interface{}) {
  *     Right *TreeNode
  * }
  */
-func levelOrder(root *TreeNode) [][]int {
+func levelOrder1(root *TreeNode) [][]int {
 	if root == nil {
 		return nil
 	}
