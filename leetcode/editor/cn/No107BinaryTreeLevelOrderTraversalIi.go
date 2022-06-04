@@ -97,11 +97,11 @@ func levelOrderBottom(root *TreeNode) [][]int {
 
 	}
 
-	reverse(result)
+	reverse1(result)
 	return result
 }
 
-func reverse(nums [][]int) {
+func reverse1(nums [][]int) {
 
 	for start, end := 0, len(nums)-1; start < end; start, end = start+1, end-1 {
 		nums[start], nums[end] = nums[end], nums[start]
