@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 //给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
 //
@@ -42,7 +44,7 @@ import "fmt"
 // Related Topics 哈希表 字符串 滑动窗口 👍 7626 👎 0
 
 func main() {
-	value := 1
+	value := lengthOfLongestSubstring("pwwkew")
 	no3Print("%+v", value)
 }
 
@@ -52,7 +54,51 @@ func no3Print(format string, params ...interface{}) {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func lengthOfLongestSubstring(s string) int {
-	return 0
+	length := len(s)
+	if length <= 1 {
+		return length
+	}
+	var (
+		m      = make(map[byte]int)
+		result int
+		right  int
+	)
+
+	for left := 0; left < length; left++ {
+		if left != 0 {
+			delete(m, s[left-1])
+		}
+
+		for right < length && m[s[right]] == 0 {
+			m[s[right]]++
+			right++
+		}
+		if right-left > result {
+			result = right - left
+		}
+	}
+
+	//var (
+	//	eMap   = make(map[byte]int)
+	//	result int
+	//	right  = -1
+	//)
+
+	//for left := 0; left < length; left++ {
+	//	if left != 0 {
+	//		delete(eMap, s[left-1])
+	//	}
+	//	for right+1 < length && eMap[s[right+1]] == 0 {
+	//		eMap[s[right+1]]++
+	//		right++
+	//	}
+	//	// 取较大值
+	//	if right-left+1 > result {
+	//		result = right - left + 1
+	//	}
+	//}
+
+	return result
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

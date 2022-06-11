@@ -77,12 +77,12 @@ type MyQueue struct {
 	stack []int
 }
 
-func Constructor() MyQueue {
-	return MyQueue{
-		stack: make([]int, 0),
-	}
-
-}
+//func Constructor() MyQueue {
+//	return MyQueue{
+//		stack: make([]int, 0),
+//	}
+//
+//}
 
 func (this *MyQueue) Push(x int) {
 	this.stack = append(this.stack, x)
