@@ -38,8 +38,11 @@ import "fmt"
 // Related Topics 树 广度优先搜索 二叉树 👍 641 👎 0
 
 func main() {
-	value := 1
-	no103Print("%+v", value)
+	no103Print("%+v", zigzagLevelOrderReverse2([]int{1, 2}))
+	no103Print("%+v", zigzagLevelOrderReverse2([]int{1, 2, 3}))
+	no103Print("%+v", zigzagLevelOrderReverse2([]int{1, 2, 3, 4}))
+	no103Print("%+v", zigzagLevelOrderReverse2([]int{1, 2, 3, 4, 5, 6}))
+	no103Print("%+v", zigzagLevelOrderReverse2([]int{1, 2, 3, 4, 5, 6, 7}))
 }
 
 func no103Print(format string, params ...interface{}) {
@@ -110,6 +113,17 @@ func zigzagLevelOrderReverse(nums []int) {
 	for start, end := 0, len(nums)-1; start < end; start, end = start+1, end-1 {
 		nums[start], nums[end] = nums[end], nums[start]
 	}
+}
+
+func zigzagLevelOrderReverse2(subAns []int) []int {
+	left := 0
+	right := len(subAns) - 1
+	for left < right {
+		subAns[left], subAns[right] = subAns[right], subAns[left]
+		left++
+		right--
+	}
+	return subAns
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

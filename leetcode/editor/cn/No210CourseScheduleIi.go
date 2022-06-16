@@ -61,6 +61,43 @@ func no210Print(format string, params ...interface{}) {
 //leetcode submit region begin(Prohibit modification and deletion)
 func findOrder(numCourses int, prerequisites [][]int) []int {
 	var (
+		edges  = make([][]int, numCourses)
+		deep   = make([]int, numCourses)
+		result []int
+		q      []int
+	)
+
+	for _, p := range prerequisites {
+		edges[p[1]] = append(edges[p[1]], p[0])
+		deep[p[0]]++
+	}
+
+	for _, d := range deep {
+		if d == 0 {
+			q = append(q, d)
+		}
+	}
+
+	if len(q) > 0 {
+		u := q[0]
+		q = q[1:]
+		result = append(result, u)
+		for _, v := range edges[u] {
+			deep[v]--
+			if deep[v] == 0 {
+				q = append(q, v)
+			}
+		}
+	}
+
+	if len(result) != numCourses {
+		return []int{}
+	}
+
+	return result
+}
+func findOrder1(numCourses int, prerequisites [][]int) []int {
+	var (
 		edges         = make([][]int, numCourses)
 		visited       = make(map[int]int, numCourses)
 		valid         = true

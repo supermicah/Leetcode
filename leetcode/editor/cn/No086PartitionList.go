@@ -84,11 +84,6 @@ func partition(head *ListNode, x int) *ListNode {
 			continue
 		}
 
-		//t := head.Next
-		//head.Next = head.Next.Next
-		//tail.Next = t
-		//tail = tail.Next
-
 		tail.Next = head.Next
 		tail = tail.Next
 		head.Next = head.Next.Next

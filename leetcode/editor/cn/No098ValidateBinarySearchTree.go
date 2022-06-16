@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 //给你一个二叉树的根节点 root ，判断其是否是一个有效的二叉搜索树。
 //
@@ -52,7 +55,6 @@ func no98Print(format string, params ...interface{}) {
 	println(fmt.Sprintf(format, params...))
 }
 
-//
 //type TreeNode struct {
 //	Val   int
 //	Left  *TreeNode
@@ -72,36 +74,51 @@ func no98Print(format string, params ...interface{}) {
  *     Right *TreeNode
  * }
  */
+
 func isValidBST(root *TreeNode) bool {
-	inSearch := validBSTInSearch(root)
-	if len(inSearch) <= 1 {
+	return bst(root, math.MinInt, math.MaxInt)
+}
+
+func bst(root *TreeNode, lower, upper int) bool {
+	if root == nil {
 		return true
 	}
-
-	for i := 1; i < len(inSearch); i++ {
-		if inSearch[i-1] >= inSearch[i] {
-			return false
-		}
+	if root.Val <= lower || root.Val >= upper {
+		return false
 	}
-	return true
+	return bst(root.Left, lower, root.Val) && bst(root.Right, root.Val, upper)
 }
 
-func validBSTInSearch(root *TreeNode) []int {
-
-	if root == nil {
-		return nil
-	}
-
-	var (
-		ans []int
-	)
-	left := validBSTInSearch(root.Left)
-	ans = append(ans, left...)
-	ans = append(ans, root.Val)
-	right := validBSTInSearch(root.Right)
-	ans = append(ans, right...)
-
-	return ans
-}
+//func isValidBST(root *TreeNode) bool {
+//	inSearch := validBSTInSearch(root)
+//	if len(inSearch) <= 1 {
+//		return true
+//	}
+//
+//	for i := 1; i < len(inSearch); i++ {
+//		if inSearch[i-1] >= inSearch[i] {
+//			return false
+//		}
+//	}
+//	return true
+//}
+//
+//func validBSTInSearch(root *TreeNode) []int {
+//
+//	if root == nil {
+//		return nil
+//	}
+//
+//	var (
+//		ans []int
+//	)
+//	left := validBSTInSearch(root.Left)
+//	ans = append(ans, left...)
+//	ans = append(ans, root.Val)
+//	right := validBSTInSearch(root.Right)
+//	ans = append(ans, right...)
+//
+//	return ans
+//}
 
 //leetcode submit region end(Prohibit modification and deletion)

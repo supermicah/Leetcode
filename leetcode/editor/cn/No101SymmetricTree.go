@@ -36,8 +36,8 @@ import "fmt"
 
 func main() {
 
-	//root := sliceToTree([]int{1, 2, 2, 3, 4, 4, 3})
-	root := sliceToTree([]int{2, 3, 3, 4, 5, 5, 4, -100000, -100000, 8, 9, -100000, -100000, 9, 8})
+	root := sliceToTree([]int{1, 2, 2, 3, 4, 4, 3})
+	//root := sliceToTree([]int{2, 3, 3, 4, 5, 5, 4, -100000, -100000, 8, 9, -100000, -100000, 9, 8})
 	value := isSymmetric(root)
 	no101Print("%+v", value)
 }
