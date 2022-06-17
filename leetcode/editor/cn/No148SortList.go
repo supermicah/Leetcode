@@ -71,9 +71,9 @@ func (l *ListNode) String() string {
  * }
  */
 func sortList(head *ListNode) *ListNode {
-	return sort(head, nil)
+	return sortListSort(head, nil)
 }
-func sort(head, tail *ListNode) *ListNode {
+func sortListSort(head, tail *ListNode) *ListNode {
 	if head == nil {
 		return head
 	}
@@ -93,7 +93,7 @@ func sort(head, tail *ListNode) *ListNode {
 	}
 
 	mid := slow
-	return merge(sort(head, mid), sort(mid, tail))
+	return merge(sortListSort(head, mid), sortListSort(mid, tail))
 }
 
 func sort1(head, tail *ListNode) *ListNode {
@@ -116,7 +116,7 @@ func sort1(head, tail *ListNode) *ListNode {
 	}
 
 	mid := slow
-	return merge(sort(head, mid), sort(mid, tail))
+	return merge(sortListSort(head, mid), sortListSort(mid, tail))
 }
 
 func merge(head1, head2 *ListNode) *ListNode {

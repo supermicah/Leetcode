@@ -33,7 +33,7 @@ import "fmt"
 // Related Topics 哈希表 字符串 分治 滑动窗口 👍 693 👎 0
 
 func main() {
-	value := 1
+	value := longestSubstring("ababbc", 2)
 	no395Print("%+v", value)
 }
 
@@ -42,8 +42,85 @@ func no395Print(format string, params ...interface{}) {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func longestSubstring(s string, k int) int {
-	return 0
+func longestSubstring(s string, k int) (ans int) {
+	for charNum := 1; charNum <= 26; charNum++ {
+		cnt := [26]int{}
+		total := 0
+		lessK := 0
+		l := 0
+
+		for r, ch := range s {
+			ch = ch - 'a'
+			if cnt[ch] == 0 {
+				total++
+				lessK++
+			}
+			cnt[ch]++
+			if cnt[ch] == k {
+				lessK--
+			}
+
+			for total > charNum {
+				lch := s[l] - 'a'
+				if cnt[lch] == k {
+					lessK++
+				}
+				cnt[lch]--
+				if cnt[lch] == 0 {
+					lessK--
+					total--
+				}
+				l++
+			}
+			if lessK == 0 {
+				ans = longestSubstringMax(ans, r-l+1)
+			}
+		}
+	}
+
+	return ans
+	// 从一个字符-> 到26个字符
+	//for t := 1; t <= 26; t++ {
+	//	cnt := [26]int{}
+	//	total := 0
+	//	lessK := 0
+	//	l := 0
+	//	for r, ch := range s {
+	//		ch -= 'a'
+	//		if cnt[ch] == 0 {
+	//			total++
+	//			lessK++
+	//		}
+	//		cnt[ch]++
+	//		if cnt[ch] == k {
+	//			lessK--
+	//		}
+	//
+	//		for total > t {
+	//			ch := s[l] - 'a'
+	//			if cnt[ch] == k {
+	//				lessK++
+	//			}
+	//			cnt[ch]--
+	//			if cnt[ch] == 0 {
+	//				total--
+	//				lessK--
+	//			}
+	//			l++
+	//		}
+	//		if lessK == 0 {
+	//			ans = max(ans, r-l+1)
+	//		}
+	//	}
+	//}
+	//return ans
+}
+
+func longestSubstringMax(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
