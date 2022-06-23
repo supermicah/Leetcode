@@ -48,7 +48,7 @@ func main() {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func singleNumber(nums []int) []int {
+func singleNumber3(nums []int) []int {
 	length := len(nums)
 	if length == 2 {
 		return nums

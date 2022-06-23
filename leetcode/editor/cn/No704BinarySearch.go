@@ -42,7 +42,7 @@ func no704Print(format string, params ...interface{}) {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func search(nums []int, target int) int {
+func search1(nums []int, target int) int {
 	start := 0
 	end := len(nums) - 1
 	for start+1 < end {

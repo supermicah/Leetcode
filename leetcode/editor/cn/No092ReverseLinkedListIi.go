@@ -68,6 +68,15 @@ func main() {
 //	return fmt.Sprintf("%d, next: %s", l.Val, l.Next)
 //}
 
+//type ListNode struct {
+//	Val  int
+//	Next *ListNode
+//}
+//
+//func (l *ListNode) String() string {
+//	return fmt.Sprintf("%d, next: %s", l.Val, l.Next)
+//}
+
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
  * Definition for singly-linked list.
@@ -77,35 +86,19 @@ func main() {
  * }
  */
 
-func reverseBetween(head *ListNode, left int, right int) *ListNode {
-	if head == nil || left == right {
-		return head
+func reverseBetween(head *ListNode, left, right int) *ListNode {
+	dummy := &ListNode{Next: head}
+	pre := dummy
+	for i := 0; i < left-1; i++ {
+		pre = pre.Next
 	}
-
-	// 先在头部增加节点，防止头部需要切换
-	dummy := &ListNode{Val: 0}
-	cursor := dummy
-	var pre *ListNode
-	i := 0
-	for i < left {
-		pre = cursor
-		cursor = dummy.Next
-		i++
+	current := pre.Next
+	for i := 0; i < right-left; i++ {
+		next := current.Next
+		current.Next = next.Next
+		next.Next = pre.Next
+		pre.Next = next
 	}
-	// 遍历之后： 1(pre)->2(head)->3->4->5->NULL
-	// i = 1
-	mid := cursor
-	var next *ListNode
-	for cursor != nil && i < right {
-		temp := cursor.Next
-		cursor.Next = next
-		next = cursor
-		cursor = temp
-		i++
-	}
-	pre.Next = next
-	mid.Next = cursor
-
 	return dummy.Next
 }
 
