@@ -44,8 +44,7 @@ import (
 // Related Topics 数组 双指针 排序 👍 1280 👎 0
 
 func main() {
-	value := 1
-	no18Print("%+v", value)
+	no18Print("%+v", fourSum([]int{2, 2, 2, 2, 2}, 8))
 }
 
 func no18Print(format string, params ...interface{}) {
@@ -63,7 +62,7 @@ func fourSum(nums []int, target int) [][]int {
 			continue
 		}
 		for j := i + 1; j < n-2 && nums[i]+nums[j]+nums[j+1]+nums[j+2] <= target; j++ {
-			if j > 0 && nums[j] == nums[j-1] || nums[i]+nums[j]+nums[n-2]+nums[n-1] < target {
+			if j > i+1 && nums[j] == nums[j-1] || nums[i]+nums[j]+nums[n-2]+nums[n-1] < target {
 				continue
 			}
 
