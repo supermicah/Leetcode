@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 //给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
 //
@@ -47,8 +50,7 @@ import "fmt"
 // Related Topics 数学 👍 3528 👎 0
 
 func main() {
-	value := reverse(1)
-	no7Print("%+v", value)
+	no7Print("%+v", reverse(-123))
 }
 
 func no7Print(format string, params ...interface{}) {
@@ -57,7 +59,16 @@ func no7Print(format string, params ...interface{}) {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func reverse(x int) int {
-	return 0
+	ans := 0
+	for x != 0 {
+		if x < math.MinInt32/10 || x > math.MaxInt32/10 {
+			return 0
+		}
+		d := x % 10
+		x = x / 10
+		ans = ans*10 + d
+	}
+	return ans
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

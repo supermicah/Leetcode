@@ -94,7 +94,7 @@ func sortListSort(head, tail *ListNode) *ListNode {
 	}
 
 	mid := slow
-	return merge(sortListSort(head, mid), sortListSort(mid, tail))
+	return merge3(sortListSort(head, mid), sortListSort(mid, tail))
 }
 
 func sort1(head, tail *ListNode) *ListNode {
@@ -117,10 +117,10 @@ func sort1(head, tail *ListNode) *ListNode {
 	}
 
 	mid := slow
-	return merge(sortListSort(head, mid), sortListSort(mid, tail))
+	return merge3(sortListSort(head, mid), sortListSort(mid, tail))
 }
 
-func merge(head1, head2 *ListNode) *ListNode {
+func merge3(head1, head2 *ListNode) *ListNode {
 	dummyHead := &ListNode{}
 	temp, temp1, temp2 := dummyHead, head1, head2
 	for temp1 != nil && temp2 != nil {

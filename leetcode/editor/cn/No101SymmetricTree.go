@@ -76,15 +76,15 @@ func sliceToTree(treeValues []int) *TreeNode {
 	return root
 }
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
-func (t *TreeNode) String() string {
-	return fmt.Sprintf("[%d, left: %s, right: %s]", t.Val, t.Left, t.Right)
-}
+//type TreeNode struct {
+//	Val   int
+//	Left  *TreeNode
+//	Right *TreeNode
+//}
+//
+//func (t *TreeNode) String() string {
+//	return fmt.Sprintf("[%d, left: %s, right: %s]", t.Val, t.Left, t.Right)
+//}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
